@@ -1,0 +1,24 @@
+﻿node : node:internal/modules/cjs/loader:1522
+At line:1 char:1
++ node _temp_extract.mjs 2>&1 | Out-File -FilePath questions_raw.txt -E ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (node:internal/modules/cjs/loader:1522:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  throw err;
+  ^
+
+Error: Cannot find module 'C:\Users\USER\Desktop\Drive_rwanda\_temp_extract.mjs'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1519:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1073:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1097:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1124:12)
+    at Module._load (node:internal/modules/cjs/loader:1296:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v26.2.0
