@@ -25,7 +25,7 @@ router.get('/questions', authMiddleware, (req, res) => {
     }));
     res.json(sanitized);
   } catch (err) {
-    console.error(err);
+    console.error('Questions error:', err);
     res.status(500).json({ message: 'Server error: ' + err.message });
   }
 });
@@ -52,7 +52,7 @@ router.get('/training', authMiddleware, (req, res) => {
     }));
     res.json(sanitized);
   } catch (err) {
-    console.error(err);
+    console.error('Training error:', err);
     res.status(500).json({ message: 'Server error: ' + err.message });
   }
 });
@@ -95,7 +95,7 @@ router.post('/submit', authMiddleware, (req, res) => {
 
     res.json({ score, total: 20, passed, results });
   } catch (err) {
-    console.error(err);
+    console.error('Submit error:', err);
     res.status(500).json({ message: 'Server error: ' + err.message });
   }
 });
@@ -108,6 +108,7 @@ router.get('/history', authMiddleware, (req, res) => {
     ).all(req.user.id);
     res.json(sessions);
   } catch (err) {
+    console.error('History error:', err);
     res.status(500).json({ message: 'Server error' });
   }
 });
