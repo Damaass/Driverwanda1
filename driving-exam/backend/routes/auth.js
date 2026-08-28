@@ -27,7 +27,7 @@ router.post('/register', (req, res) => {
     const token = jwt.sign({ id: userId, email, names, role: 'user' }, JWT_SECRET, { expiresIn: '24h' });
     res.json({ token, user: { id: userId, names, email, phone: phone||'', national_id: national_id||'', date_of_birth: date_of_birth||'', role: 'user', registration_code: regCode } });
   } catch (err) {
-    console.error(err);
+    console.error('Register error:', err);
     res.status(500).json({ message: 'Ikosa rya server / Server error: ' + err.message });
   }
 });
@@ -49,7 +49,7 @@ router.post('/login', (req, res) => {
       user: { id: user.id, names: user.names, email: user.email, phone: user.phone, national_id: user.national_id, date_of_birth: user.date_of_birth, role: user.role || 'user', created_at: user.created_at }
     });
   } catch (err) {
-    console.error(err);
+    console.error('Login error:', err);
     res.status(500).json({ message: 'Server error: ' + err.message });
   }
 });
@@ -61,6 +61,7 @@ router.get('/me', authMiddleware, (req, res) => {
     if (!user) return res.status(404).json({ message: 'User not found' });
     res.json(user);
   } catch (err) {
+    console.error('Get user error:', err);
     res.status(500).json({ message: 'Server error' });
   }
 });
