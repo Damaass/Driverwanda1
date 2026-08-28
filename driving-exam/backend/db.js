@@ -1,6 +1,5 @@
-// Uses Node.js built-in sqlite module (available since Node 22.5+)
-// No external dependencies needed!
-const { DatabaseSync } = require('node:sqlite');
+// Uses better-sqlite3 for reliable database support
+const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
 
@@ -11,8 +10,8 @@ const dbPath = path.join(dbDir, 'exam.db');
 // Create database instance
 let db;
 try {
-  db = new DatabaseSync(dbPath);
-  db.exec("PRAGMA journal_mode = WAL");
+  db = new Database(dbPath);
+  db.pragma('journal_mode = WAL');
 } catch (err) {
   console.error('Failed to initialize database:', err.message);
   throw new Error('Database initialization failed: ' + err.message);
